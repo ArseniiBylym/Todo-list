@@ -1,4 +1,4 @@
-import { any } from "prop-types";
+// import { any } from "prop-types";
 
 export interface ITodoItem {
     id: number,
@@ -33,6 +33,13 @@ export interface IService{
         create$: any
 }
 
-export interface ITodoFooter{
+export interface ITodoFilter{
     filterFunc: (type: string) => void
+}
+
+export interface ITodoFormState{
+    text: string
+}
+export interface ITodoFormProps{
+    addTodoHandler: (text: string) => void
 }

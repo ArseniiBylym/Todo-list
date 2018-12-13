@@ -1,29 +1,15 @@
 import React, { Component } from 'react';
-import './TodoFooter.scss';
-import TodoService from '../../rxjs/service';
-import {ITodoFooter} from '../../model/interface'
+import './TodoFilter.scss';
+import {ITodoFilter} from '../../model/interface'
 
-class TodoFooter extends Component<ITodoFooter, {}> {
+class TodoFilter extends Component<ITodoFilter, {}> {
     state = {
         
     }
 
-    showActualHandler = () => {
-        // TodoService.removeCompleted()
-
-    }
-
-    showAllHandler = () => {
-        // TodoService.showAll()
-    }
-
-    showCompletedHandler = () => {
-        // TodoService.showComplated()
-    }
-
     render() {
         return(
-            <div className='TodoFooter'>
+            <div className='TodoFilter'>
                 <div className="showAll__button" onClick={this.props.filterFunc.bind(this, 'all')}>SHOW ALL</div>
                 <div className="showCompleted__button" onClick={this.props.filterFunc.bind(this, 'completed')}>SHOW COMPLETED</div>
                 <div className="showNotCompleted__button" onClick={this.props.filterFunc.bind(this, 'active')}>SHOW ACTIVE</div>
@@ -32,4 +18,4 @@ class TodoFooter extends Component<ITodoFooter, {}> {
     }
 }
 
-export default TodoFooter
+export default TodoFilter

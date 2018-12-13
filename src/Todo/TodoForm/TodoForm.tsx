@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './TodoForm.scss';
-import { EventEmitter } from 'events';
+import {ITodoFormState, ITodoFormProps} from '../../model/interface'
 
-class TodoForm  extends Component<any, any> {
+class TodoForm extends Component<ITodoFormProps, ITodoFormState> {
     state = {
         text: ''
     }
@@ -25,12 +25,34 @@ class TodoForm  extends Component<any, any> {
             text: ''
         })
     }
+    keyUpHandler = (e: any) => {
+        if(this.state.text && this.state.text.trim().length > 0) {
+            if(e.keyCode == 13) {
+                e.preventDefault()
+                this.props.addTodoHandler(this.state.text)
+                this.setState({
+                    text: ''
+                })
+            }
+            if(e.keyCode == 27) {
+                e.preventDefault()
+                this.setState({
+                    text: ''
+                })
+            }
+        }
+    }
 
     render() {
         return(
             <div className='TodoForm'>
                <div className="TodoForm__item TodoForm__label">What I need to do:</div> 
-               <input className='TodoForm__item TodoForm__input' value={this.state.text} type='text' onChange={this.handleChange}></input>
+               <input className='TodoForm__item TodoForm__input' 
+                    value={this.state.text} 
+                    type='text' 
+                    onChange={this.handleChange} 
+                    onKeyUp={this.keyUpHandler}
+                />
                <div className="TodoForm__item TodoForm__actions">
                     <div className="addButton" onClick={this.addHandler}>ADD</div>
                     <div className="clearButton" onClick={this.clearHandler}>CLEAR</div>
