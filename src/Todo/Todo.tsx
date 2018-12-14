@@ -35,7 +35,7 @@ class Todo extends Component<{}, ITodo> {
                 <TodoHeader />
                 <TodoForm addTodoHandler={this.handleAdd} />
                 <TodoList filter={this.state.filter} list={this.state.todoList} />
-                <TodoFilter filterFunc={this.filterHandler} />
+                {this.state.todoList.length > 0 && <TodoFilter filter={this.state.filter} filterFunc={this.filterHandler} />}
             </div>
         )
     }

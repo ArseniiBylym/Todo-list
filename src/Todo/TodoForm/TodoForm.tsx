@@ -43,11 +43,19 @@ class TodoForm extends Component<ITodoFormProps, ITodoFormState> {
         }
     }
 
+    componentDidMount = () => {
+        const formInput = document.getElementById('mainFormInput')
+        if(formInput) {
+            formInput.focus();
+        }
+    }
+
     render() {
         return(
             <div className='TodoForm'>
                <div className="TodoForm__item TodoForm__label">I NEED TO DO:</div> 
                <input className='TodoForm__item TodoForm__input' 
+                    id='mainFormInput'
                     value={this.state.text} 
                     type='text' 
                     onChange={this.handleChange} 

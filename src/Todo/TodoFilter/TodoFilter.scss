@@ -8,12 +8,17 @@
     div{
         padding: 10px;
         border-radius: 5px;
-        box-shadow: 0 5px 5px rgba(0,0,0,.3);
+        box-shadow: 0 8px 15px -3px rgba(0,0,0,.4);
         cursor: pointer;
 
+        &.activeButton{
+            background-color: darkseagreen;
+            // box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+        }
+
         &:active{
-            box-shadow: none;
-            background-color: darkgray;
+            box-shadow: 0 3px 5px -1px rgba(0,0,0,.4);
+            background-color: darkslategrey;
         }
     
     }

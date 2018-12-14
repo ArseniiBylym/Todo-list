@@ -34,7 +34,8 @@ export interface IService{
 }
 
 export interface ITodoFilter{
-    filterFunc: (type: string) => void
+    filterFunc: (type: string) => void,
+    filter: string
 }
 
 export interface ITodoFormState{
