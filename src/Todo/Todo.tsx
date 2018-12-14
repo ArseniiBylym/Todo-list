@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Todo.scss';
-import { ITodo } from '../model/interface'
+import { ITodo,ITodoItem } from '../model/interface'
 import TodoHeader from './TodoHeader/TodoHeader';
 import TodoForm from './TodoForm/TodoForm';
 import TodoList from './TodoList/TodoList';
@@ -16,7 +16,7 @@ class Todo extends Component<{}, ITodo> {
 
     componentDidMount = () => {
         TodoService.todos$
-            .subscribe((todos: any) => this.setState({ todoList: todos }));
+            .subscribe((todos: ITodoItem[]) => this.setState({ todoList: todos }));
     }
 
     handleAdd = (title: string) => {

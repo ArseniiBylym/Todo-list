@@ -1,5 +1,3 @@
-// import {ITodoItem} from './interface'
-
 export default class TodoModel{
 
     constructor(title) {

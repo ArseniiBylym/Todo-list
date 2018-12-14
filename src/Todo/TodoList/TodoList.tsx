@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import './TodoList.scss';
 import TodoItem from '../TodoItem/TodoItem'
-import {ITodoItem, ITodoItemComponent, ITodoList} from '../../model/interface'
+import { ITodoList} from '../../model/interface'
 
 class TodoList extends Component<ITodoList, {}> {
-    state = {
-        
-    }
+    state = {}
 
     render() {
-        console.log(this.props.list)
         let itemsList = null;
         if(this.props.list.length > 0) {
             let filteredList = null

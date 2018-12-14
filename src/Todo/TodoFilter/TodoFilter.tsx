@@ -3,9 +3,7 @@ import './TodoFilter.scss';
 import {ITodoFilter} from '../../model/interface'
 
 class TodoFilter extends Component<ITodoFilter, {}> {
-    state = {
-        
-    }
+    state = {}
 
     render() {
         return(

@@ -46,7 +46,7 @@ class TodoForm extends Component<ITodoFormProps, ITodoFormState> {
     render() {
         return(
             <div className='TodoForm'>
-               <div className="TodoForm__item TodoForm__label">What I need to do:</div> 
+               <div className="TodoForm__item TodoForm__label">I NEED TO DO:</div> 
                <input className='TodoForm__item TodoForm__input' 
                     value={this.state.text} 
                     type='text' 
