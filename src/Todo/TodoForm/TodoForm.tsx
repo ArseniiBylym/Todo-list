@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './TodoForm.scss';
 import {ITodoFormState, ITodoFormProps} from '../../model/interface'
+import {inject} from 'mobx-react';
 
-class TodoForm extends Component<ITodoFormProps, ITodoFormState> {
+@inject('TodoStore')
+class TodoForm extends Component<any, ITodoFormState> {
     state = {
         text: ''
     }
@@ -14,7 +16,7 @@ class TodoForm extends Component<ITodoFormProps, ITodoFormState> {
     }
     addHandler = () => {
         if(this.state.text && this.state.text.trim().length > 0) {
-            this.props.addTodoHandler(this.state.text)
+            this.props.TodoStore.add(this.state.text)
             this.setState({
                 text: ''
             })
@@ -29,7 +31,7 @@ class TodoForm extends Component<ITodoFormProps, ITodoFormState> {
         if(this.state.text && this.state.text.trim().length > 0) {
             if(e.keyCode == 13) {
                 e.preventDefault()
-                this.props.addTodoHandler(this.state.text)
+                this.props.TodoStore.add(this.state.text)
                 this.setState({
                     text: ''
                 })

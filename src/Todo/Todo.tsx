@@ -5,8 +5,10 @@ import TodoHeader from './TodoHeader/TodoHeader';
 import TodoForm from './TodoForm/TodoForm';
 import TodoList from './TodoList/TodoList';
 import TodoFilter from './TodoFilter/TodoFilter'
-import TodoService from '../rxjs/service';
+import {observer, inject} from 'mobx-react';
 
+@inject('TodoStore')
+@observer
 class Todo extends Component<{}, ITodo> {
 
     state = {
@@ -15,12 +17,12 @@ class Todo extends Component<{}, ITodo> {
     }
 
     componentDidMount = () => {
-        TodoService.todos$
-            .subscribe((todos: ITodoItem[]) => this.setState({ todoList: todos }));
+        // TodoService.todos$
+        //     .subscribe((todos: ITodoItem[]) => this.setState({ todoList: todos }));
     }
 
     handleAdd = (title: string) => {
-        TodoService.add(title);
+        // TodoService.add(title);
     }
 
     filterHandler = (type: string) => {
@@ -33,9 +35,9 @@ class Todo extends Component<{}, ITodo> {
         return (
             <div className='Todo'>
                 <TodoHeader />
-                <TodoForm addTodoHandler={this.handleAdd} />
+                <TodoForm />
                 <TodoList filter={this.state.filter} list={this.state.todoList} />
-                {this.state.todoList.length > 0 && <TodoFilter filter={this.state.filter} filterFunc={this.filterHandler} />}
+                {/* {this.state.todoList.length > 0 && <TodoFilter filter={this.state.filter} filterFunc={this.filterHandler} />} */}
             </div>
         )
     }

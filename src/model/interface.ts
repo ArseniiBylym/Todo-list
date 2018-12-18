@@ -1,4 +1,5 @@
 // import { any } from "prop-types";
+import { TodoModel } from './todoModel'
 
 export interface ITodoItem {
     id: number,
@@ -42,5 +43,6 @@ export interface ITodoFormState{
     text: string
 }
 export interface ITodoFormProps{
-    addTodoHandler: (text: string) => void
+    TodoStore: any
+    // addTodoHandler: (text: string) => void
 }
