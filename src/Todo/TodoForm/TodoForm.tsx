@@ -16,7 +16,7 @@ class TodoForm extends Component<any, ITodoFormState> {
     }
     addHandler = () => {
         if(this.state.text && this.state.text.trim().length > 0) {
-            this.props.TodoStore.add(this.state.text)
+            this.props.TodoStore.addTodo(this.state.text)
             this.setState({
                 text: ''
             })
@@ -31,7 +31,7 @@ class TodoForm extends Component<any, ITodoFormState> {
         if(this.state.text && this.state.text.trim().length > 0) {
             if(e.keyCode == 13) {
                 e.preventDefault()
-                this.props.TodoStore.add(this.state.text)
+                this.props.TodoStore.addTodo(this.state.text)
                 this.setState({
                     text: ''
                 })

@@ -1,29 +1,17 @@
 import React, { Component } from 'react';
 import './Todo.scss';
-import { ITodo,ITodoItem } from '../model/interface'
+import { ITodo } from '../model/interface'
 import TodoHeader from './TodoHeader/TodoHeader';
 import TodoForm from './TodoForm/TodoForm';
 import TodoList from './TodoList/TodoList';
 import TodoFilter from './TodoFilter/TodoFilter'
+import TodoSort from './TodoSort/TodoSort'
 import {observer, inject} from 'mobx-react';
 
 @inject('TodoStore')
 @observer
-class Todo extends Component<{}, ITodo> {
+class Todo extends Component<any, ITodo> {
 
-    state = {
-        todoList: [],
-        filter: 'all'
-    }
-
-    componentDidMount = () => {
-        // TodoService.todos$
-        //     .subscribe((todos: ITodoItem[]) => this.setState({ todoList: todos }));
-    }
-
-    handleAdd = (title: string) => {
-        // TodoService.add(title);
-    }
 
     filterHandler = (type: string) => {
         this.setState({
@@ -36,8 +24,9 @@ class Todo extends Component<{}, ITodo> {
             <div className='Todo'>
                 <TodoHeader />
                 <TodoForm />
-                <TodoList filter={this.state.filter} list={this.state.todoList} />
-                {/* {this.state.todoList.length > 0 && <TodoFilter filter={this.state.filter} filterFunc={this.filterHandler} />} */}
+                {this.props.TodoStore.todoLength > 0 && <TodoSort />}
+                <TodoList />
+                {this.props.TodoStore.todoLength > 0 && <TodoFilter />}
             </div>
         )
     }

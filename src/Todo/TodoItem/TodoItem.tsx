@@ -6,9 +6,12 @@ import CheckBoxIcon from '../../img/check-box-empty.svg'
 import OutlineIcon from '../../img/outline-done.svg'
 import EditIcon from '../../img/edit-icon.svg'
 import moment from 'moment';
-import TodoService from '../../rxjs/service';
+import {observer, inject} from 'mobx-react';
 
-class TodoItem extends Component<ITodoItemComponent, {}> {
+
+@inject('TodoStore')
+@observer
+class TodoItem extends Component<any, {}> {
     state = {
         isEdit: false,
         editableText: ''
@@ -16,10 +19,10 @@ class TodoItem extends Component<ITodoItemComponent, {}> {
     inputRef = React.createRef()
 
     doneHandler = () => {
-        TodoService.toggle(this.props.config.id);
+        this.props.TodoStore.switchTodo(this.props.config.id)
     }
-    removerHandler = () => {
-        TodoService.remove(this.props.config.id);
+    removeHandler = () => {
+        this.props.TodoStore.removeTodo(this.props.config.id)
     }
     editHandler = () => {
         this.setState({
@@ -42,7 +45,7 @@ class TodoItem extends Component<ITodoItemComponent, {}> {
         if(this.state.editableText && this.state.editableText.trim().length > 0) {
             if(e.keyCode == 13) {
                 e.preventDefault()
-                TodoService.change(this.props.config.id, this.state.editableText);
+                this.props.TodoStore.editTodoName(this.props.config.id, this.state.editableText)
                 this.setState({
                     isEdit: false,
                     editableText: '',
@@ -70,7 +73,7 @@ class TodoItem extends Component<ITodoItemComponent, {}> {
                     }
                     <div className="TodoItem__date">{moment(date).format('Do MMM YYYY')}</div>
                     {done 
-                        ? <div className="TodoItem__delete" onClick={this.removerHandler}><img src={DeleteIcon} alt='Delete'/></div>
+                        ? <div className="TodoItem__delete" onClick={this.removeHandler}><img src={DeleteIcon} alt='Delete'/></div>
                         : <div className="TodoItem__edit" onClick={this.editHandler}><img src={EditIcon} alt='Edit'/></div>
                     }
                 </div>

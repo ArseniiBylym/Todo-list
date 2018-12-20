@@ -2,38 +2,25 @@ import React, { Component } from 'react';
 import './TodoList.scss';
 import TodoItem from '../TodoItem/TodoItem'
 import { ITodoList} from '../../model/interface'
+import {observer, inject} from 'mobx-react';
 
-class TodoList extends Component<ITodoList, {}> {
+@inject('TodoStore')
+@observer
+class TodoList extends Component<any, {}> {
     state = {}
 
     render() {
-        const { filter, list } = this.props
+
+        const { filteredList } = this.props.TodoStore
         let itemsList = null;
-        if(list.length > 0) {
-            let filteredList = null
-            switch (filter) {
-                case 'completed': 
-                    filteredList = list.filter((item,i) => {
-                        return item.done === true
-                    })
-                    break
-                case 'active': 
-                    filteredList = list.filter((item, i) => {
-                        return item.done === false
-                    })
-                    break
-                default: 
-                    filteredList = list
-                    break
-            }
-            itemsList = filteredList.map((item, i) => {
+        if(filteredList.length > 0) {
+            itemsList = filteredList.map((item:any, i:any) => {
                 return (
                     <TodoItem key={item.id} config={item} index={i}/>
                 )
             }) 
-
-            
         }
+
         return(
             <div className='TodoList'>
                 {itemsList}

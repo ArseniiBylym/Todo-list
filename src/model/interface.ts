@@ -6,6 +6,7 @@ export interface ITodoItem {
     done: boolean,
     title: string,
     date: string,
+    [method: string]: any
 }
 
 export interface ITodoItemComponent {
@@ -25,8 +26,10 @@ export interface ITodo {
 }
 
 export interface ITodoList {
-    list: ITodoItem[],
-    filter?: string,
+    TodoStore: any,
+    filteredList: any
+    // list: ITodoItem[],
+    // filter?: string,
 }
 
 export interface IService{

@@ -7,8 +7,10 @@
     "@types/node": "^10.12.14",
     "@types/react": "^16.7.17",
     "@types/react-dom": "^16.0.11",
+    "classnames": "^2.2.6",
     "mobx": "^5.8.0",
     "mobx-react": "^5.4.3",
+    "mobx-react-devtools": "^6.0.3",
     "moment": "^2.23.0",
     "node-sass": "^4.11.0",
     "react": "^16.6.3",
@@ -30,5 +32,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@types/classnames": "^2.2.6"
+  }
 }
